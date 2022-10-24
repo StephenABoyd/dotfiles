@@ -1,4 +1,5 @@
 require('plugins')
+require('plugins/treesitter')
 require('plugins/lsp')
 require('plugins/editor')
 require('plugins/keymaps')

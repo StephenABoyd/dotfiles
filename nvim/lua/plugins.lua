@@ -48,7 +48,7 @@ require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
 		requires = { {'nvim-lua/plenary.nvim'} },
-		config = function() 
+		config = function()
 			require("telescope").setup{
 				extensions = {
 					file_browser = {
@@ -62,18 +62,16 @@ require('packer').startup(function(use)
 	use 'APZelos/blamer.nvim'
 	use 'airblade/vim-gitgutter'
 	use 'vim-test/vim-test'
-	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-	use { 'Equilibris/nx.nvim', config = function()
-		require("nx").setup {}
-	end}
+	use {'iamcco/markdown-preview.nvim', run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }}
+	use {'Equilibris/nx.nvim', config = function() require("nx").setup {} end}
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-	use {'j-hui/fidget.nvim', config = function()
-		require"fidget".setup{}
-	end}
-	use {"nvim-telescope/telescope-file-browser.nvim", config = function()
-		require("telescope").load_extension "file_browser"
-	end}
+	use {'j-hui/fidget.nvim', config = function() require"fidget".setup{} end}
+	use {'nvim-telescope/telescope-file-browser.nvim', config = function() require("telescope").load_extension "file_browser" end}
   use 'sainnhe/sonokai'
   use 'vim-airline/vim-airline'
+	use 'williamboman/mason.nvim'
+	use 'williamboman/mason-lspconfig.nvim'
+	use 'hrsh7th/cmp-vsnip'
+	use 'hrsh7th/vim-vsnip'
 end)
 

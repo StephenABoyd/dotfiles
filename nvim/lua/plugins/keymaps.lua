@@ -19,10 +19,6 @@ vim.keymap.set('n', ';w', '<C-w>', bufopts)
 -- -- Emmet
 vim.keymap.set('n', ';e', ':Emmet', bufopts)
 
--- -- Open current folder
--- vim.keymap.set('n', ';s', ':Neotree position=float reveal=true<CR>', bufopts)
-
-
 -- -- Vim Test
 vim.keymap.set('n', '<leader>t', ':TestNearest<CR>', bufopts)
 vim.keymap.set('n', '<leader>T', ':TestFile<CR>', bufopts)

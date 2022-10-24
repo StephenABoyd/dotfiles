@@ -7,7 +7,8 @@ cmp.setup({
 	},
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
-		{ name = 'buffer' }
+		{ name = 'buffer' },
+		{ name = 'vsnip' }
 	}),
 	mapping = cmp.mapping.preset.insert({
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -16,7 +17,12 @@ cmp.setup({
 		['<C-e>'] = cmp.mapping.abort(),
 		['<CR>'] = cmp.mapping.confirm({ select = true }),
 		['<Tab>'] = cmp.mapping.select_next_item({ behavior = 'select'})
-    	}),
+  }),
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body)
+		end
+	}
 })
 
 -- LSP keymaps
@@ -44,17 +50,57 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
--- Start LSPs
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+		"sumneko_lua",
+		"html",
+		"cssls",
+		"jsonls",
+		"angularls",
+		"eslint",
+		"tsserver",
+		"yamlls"
+	}
+})
+
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
-require'lspconfig'.tsserver.setup{
-	capabilities = capabilities,
-	on_attach = on_attach
+require("mason-lspconfig").setup_handlers {
+	-- The first entry (without a key) will be the default handler
+	-- and will be called for each installed server that doesn't have
+	-- a dedicated handler.
+	function (server_name) -- default handler (optional)
+		require("lspconfig")[server_name].setup {
+			capabilities = capabilities,
+			on_attach = on_attach
+		}
+	end,
+
+	["sumneko_lua"] = function ()
+		require'lspconfig'.sumneko_lua.setup {
+			capabilities = capabilities,
+			on_attach = on_attach,
+			settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          }
+        }
+    	}
+		}
+	end
 }
-require'lspconfig'.angularls.setup({
-	capabilities = capabilities,
-	on_attach = on_attach
-})
-require'lspconfig'.eslint.setup({
-	capabilities = capabilities,
-	on_attach = on_attach
-})
+
+-- Start LSPs
+-- require'lspconfig'.tsserver.setup{
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach
+-- }
+-- require'lspconfig'.angularls.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach
+-- })
+-- require'lspconfig'.eslint.setup({
+-- 	capabilities = capabilities,
+-- 	on_attach = on_attach
+-- })
