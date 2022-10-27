@@ -23,7 +23,12 @@ vim.cmd('set termguicolors')
 vim.g['airline_theme'] = 'sonokai'
 vim.g['sonokai_enable_italic'] = 1
 vim.g['sonokai_diagnostic_text_highlight'] = 1
-vim.cmd('colorscheme sonokai')
+--vim.cmd('colorscheme sonokai')
+--vim.cmd('colorscheme kanagawa')
+require('onedark').setup {
+	style = 'darker'
+}
+require('onedark').load()
 
 -- ESLint configs
 local eslintGroup = vim.api.nvim_create_augroup("ESLint", { clear = true })
@@ -33,3 +38,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = "EslintFixAll",
 	group = eslintGroup
 })
+
+-- Center on Insert
+vim.cmd([[
+  augroup insert_center
+    autocmd!
+    autocmd InsertEnter * normal zz
+  augroup end
+]])

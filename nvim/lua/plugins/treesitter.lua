@@ -1,6 +1,6 @@
 require'nvim-treesitter.configs'.setup {
   -- A list of parsers
-  ensure_installed = { "css", "lua", "typescript", "javascript", "html", "scss", "json" },
+  ensure_installed = { "css", "bash", "regex", "lua", "typescript", "javascript", "html", "scss", "json" },
 	-- Auto install parsers not in list above if file opened
 	auto_install = true,
 	-- Syntax highlighting config

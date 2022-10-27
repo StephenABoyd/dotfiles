@@ -60,7 +60,8 @@ require("mason-lspconfig").setup({
 		"angularls",
 		"eslint",
 		"tsserver",
-		"yamlls"
+		"yamlls",
+		"emmet_ls"
 	}
 })
 
@@ -91,16 +92,3 @@ require("mason-lspconfig").setup_handlers {
 	end
 }
 
--- Start LSPs
--- require'lspconfig'.tsserver.setup{
--- 	capabilities = capabilities,
--- 	on_attach = on_attach
--- }
--- require'lspconfig'.angularls.setup({
--- 	capabilities = capabilities,
--- 	on_attach = on_attach
--- })
--- require'lspconfig'.eslint.setup({
--- 	capabilities = capabilities,
--- 	on_attach = on_attach
--- })

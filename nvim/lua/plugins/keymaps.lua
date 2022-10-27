@@ -10,8 +10,11 @@ vim.keymap.set('n', ';f', ':Telescope find_files<CR>', bufopts)
 -- -- Search all file content
 vim.keymap.set('n', ';s', ':Telescope live_grep<CR>', bufopts)
 
--- -- File Browser
+-- -- Telescope File Browser
 vim.keymap.set('n', ';t', ':Telescope file_browser grouped=true cwd=%:p:h select_buffer=true <CR>', bufopts)
+
+-- -- Neotree File Browser
+vim.keymap.set('n', ';n', ':NvimTreeToggle<CR>', bufopts)
 
 -- -- Shortcut window command
 vim.keymap.set('n', ';w', '<C-w>', bufopts)
