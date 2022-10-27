@@ -1,7 +1,8 @@
 -- set tab width to 2 spaces
 vim.opt.tabstop = 2
-vim.opt.softtabstop = 0
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
 
 -- show line numbers
 vim.opt.number = true
@@ -31,13 +32,20 @@ require('onedark').setup {
 require('onedark').load()
 
 -- ESLint configs
-local eslintGroup = vim.api.nvim_create_augroup("ESLint", { clear = true })
+local onSaveGroup = vim.api.nvim_create_augroup("ESLint", { clear = true })
 -- Automatically fix linting on save
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = {"*.tsx","*.ts","*.jsx","*.js"},
 	command = "EslintFixAll",
-	group = eslintGroup
+	group = onSaveGroup
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = {"*"},
+	command = "retab",
+	group = onSaveGroup
+})
+
 
 -- Center on Insert
 vim.cmd([[
