@@ -27,7 +27,7 @@ vim.g['sonokai_diagnostic_text_highlight'] = 1
 --vim.cmd('colorscheme sonokai')
 --vim.cmd('colorscheme kanagawa')
 require('onedark').setup {
-	style = 'darker'
+  style = 'darker'
 }
 require('onedark').load()
 
@@ -35,15 +35,15 @@ require('onedark').load()
 local onSaveGroup = vim.api.nvim_create_augroup("ESLint", { clear = true })
 -- Automatically fix linting on save
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = {"*.tsx","*.ts","*.jsx","*.js"},
-	command = "EslintFixAll",
-	group = onSaveGroup
+  pattern = {"*.tsx","*.ts","*.jsx","*.js"},
+  command = "EslintFixAll",
+  group = onSaveGroup
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = {"*"},
-	command = "retab",
-	group = onSaveGroup
+  pattern = {"*"},
+  command = "retab",
+  group = onSaveGroup
 })
 
 
