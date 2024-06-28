@@ -1,9 +1,10 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
+    enabled = function() return vim.g.vscode == nil end,
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'css', 'bash', 'regex', 'lua', 'typescript', 'javascript', 'html', 'scss', 'json', 'xml' },
+      ensure_installed = { 'css', 'bash', 'regex', 'lua', 'typescript', 'javascript', 'html', 'scss', 'json', 'xml', 'rust' },
       auto_install = true,
       highlight = {
         enable = true,

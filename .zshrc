@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/Users/StephenBoyd/google-cloud-sdk/bin/docker-credential-gcloud:/opt/homebrew/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
@@ -123,7 +122,6 @@ alias rg="rg -F"
 alias nxr="npx nx run"
 alias nxg="npx nx workspace-generator"
 alias nxf="npx nx format:write --uncommitted"
-alias docker="podman"
 
 eval "$(starship init zsh)"
 

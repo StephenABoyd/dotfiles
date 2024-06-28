@@ -2,12 +2,14 @@ return {
   -- LSP Configs
   {
     'neovim/nvim-lspconfig',
-    event = 'BufEnter *.*'
+    event = 'BufEnter *.*',
+    enabled = function() return vim.g.vscode == nil end,
   },
   -- LSP Package Manager
   {
     'williamboman/mason.nvim',
     event = 'BufEnter *.*',
+    enabled = function() return vim.g.vscode == nil end,
     config = function ()
       require("mason").setup()
     end
@@ -26,12 +28,18 @@ return {
         "eslint",
         "tsserver",
         "yamlls",
-        "emmet_ls"
+        "emmet_ls",
+        "omnisharp_mono",
+        "rust_analyzer"
       }
     },
     config = function (_, opts)
       require("mason-lspconfig").setup(opts)
     end
+  },
+  {
+    'OmniSharp/omnisharp-vim',
+    event = 'BufEnter *.cs',
   },
   {
     'ray-x/lsp_signature.nvim',

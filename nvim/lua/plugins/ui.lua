@@ -1,23 +1,27 @@
 return {
   {
     'vim-airline/vim-airline',
+    enabled = function() return vim.g.vscode == nil end,
     dependencies = { 'vim-airline/vim-airline-themes' }
   },
   'airblade/vim-gitgutter',
   {
     'j-hui/fidget.nvim',
     tag = 'legacy',
+    enabled = function() return vim.g.vscode == nil end,
     config = function() require'fidget'.setup{} end
   },
   {
     'startup-nvim/startup.nvim',
     dependencies = {'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim'},
+    enabled = function() return vim.g.vscode == nil end,
     config = function()
       require'startup'.setup({theme = 'startify'})
     end
   },
   {
     'nvim-tree/nvim-tree.lua',
+    enabled = function() return vim.g.vscode == nil end,
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- optional, for file icons
     },
@@ -39,6 +43,7 @@ return {
   },
   {
     'folke/trouble.nvim',
+    enabled = function() return vim.g.vscode == nil end,
     event = 'BufEnter *.*',
     config = function()
       require('trouble').setup {

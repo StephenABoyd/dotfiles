@@ -25,31 +25,34 @@ vim.diagnostic.config({
 
 vim.o.updatetime = 300
 
--- Theming
-vim.cmd('set termguicolors')
-vim.g.airline_theme='bubblegum'
-vim.g.airline_section_z='Line %l/%L : %c'
-vim.g.airline_section_y=''
+if vim.g.vscode then
+  -- Nothing
+else
+  -- Theming
+  vim.cmd('set termguicolors')
+  vim.g.airline_theme='bubblegum'
+  vim.g.airline_section_z='Line %l/%L : %c'
+  vim.g.airline_section_y=''
 
---[[ vim.cmd.colorscheme "catppuccin" ]]
---[[ vim.cmd.colorscheme "nord" ]]
---[[ vim.api.nvim_set_hl(0, "Normal", { ctermfg=NONE,  ctermbg=NONE }) ]]
+  --[[ vim.cmd.colorscheme "catppuccin" ]]
+  --[[ vim.cmd.colorscheme "nord" ]]
+  --[[ vim.api.nvim_set_hl(0, "Normal", { ctermfg=NONE,  ctermbg=NONE }) ]]
 
+  -- ESLint configs
+  local onSaveGroup = vim.api.nvim_create_augroup("ESLint", { clear = true })
+  -- Automatically fix linting on save
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = {"*.tsx","*.ts","*.jsx","*.js"},
+    command = "EslintFixAll",
+    group = onSaveGroup
+  })
 
--- ESLint configs
-local onSaveGroup = vim.api.nvim_create_augroup("ESLint", { clear = true })
--- Automatically fix linting on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*.tsx","*.ts","*.jsx","*.js"},
-  command = "EslintFixAll",
-  group = onSaveGroup
-})
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = {"*"},
-  command = "retab",
-  group = onSaveGroup
-})
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = {"*"},
+    command = "retab",
+    group = onSaveGroup
+  })
+end
 
 
 -- Center on Insert

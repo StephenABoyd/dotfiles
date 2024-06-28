@@ -12,6 +12,7 @@ return {
   -- },
   {
     'catppuccin/nvim',
+    enabled = function() return vim.g.vscode == nil end,
     name = 'catppuccin',
     config = function()
       require("catppuccin").setup({

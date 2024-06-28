@@ -1,6 +1,7 @@
 return {
   {
     'iamcco/markdown-preview.nvim',
+    enabled = function() return vim.g.vscode == nil end,
     event = 'BufEnter *.md',
     build = 'cd app && npm install',
     config = function() vim.g.mkdp_filetypes = { 'markdown' } end,

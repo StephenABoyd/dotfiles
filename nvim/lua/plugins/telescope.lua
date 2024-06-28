@@ -1,6 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    enabled = function() return vim.g.vscode == nil end,
     version = '0.1.2',
     dependencies = { {'nvim-lua/plenary.nvim'} },
     keys = {
@@ -20,6 +21,7 @@ return {
   },
   {
     'nvim-telescope/telescope-file-browser.nvim',
+    enabled = function() return vim.g.vscode == nil end,
     config = function() require('telescope').load_extension 'file_browser' end,
     dependencies = { {'nvim-telescope/telescope.nvim'} },
   }

@@ -1,6 +1,7 @@
 return {
   {
     "nvim-neotest/neotest",
+    enabled = function() return vim.g.vscode == nil end,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
