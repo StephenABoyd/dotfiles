@@ -9,9 +9,6 @@
 			enable = true;
 			defaultEditor = true;
 		};
-		git = {
-			enable = true;
-		};
 		nushell = {
 			enable = true;
 			shellAliases =
