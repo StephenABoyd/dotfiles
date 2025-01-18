@@ -1,14 +1,25 @@
+# My Dots
+
+## Install (Non-NixOs)
 Create symlink for folders/files
 
-MacOS example, assuming this repo is at root dir
-
+### Neovim Configs
 `ln -s ~/dotfiles/nvim ~/.config/nvim`
 
+### Wezterm Configs
 `ln -s ~/dotfiles/.wezterm.lua ~/.wezterm.lua`
 
+### Zsh Configs
 `ln -s ~/dotfiles/.zshrc ~/.zshrc`
 
-## Prerequisites
+## Install (NixOS)
+```
+cd <repo-location>
+sudo nixos-reload switch --flake ./nixos
+home-manager switch --flake ./nixos
+```
+
+## Prerequisites (if not using NixOS)
 - Node
 - ZSH (delete existing .zshrc before symlinking)
 - OhMyZsh
