@@ -1,7 +1,6 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -94,11 +93,18 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  programs.git = {
+    enable = true;
+    package = pkgs.gitFull;
+    config = {
+      credential.helper = "libsecret";
+    };
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     home-manager
-    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
