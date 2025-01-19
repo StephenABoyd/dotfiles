@@ -17,6 +17,7 @@ Create symlink for folders/files
 cd <repo-location>
 sudo nixos-reload switch --flake ./nixos
 home-manager switch --flake ./nixos
+ln -s ~/dotfiles/nvim ~/.config/nvim
 ```
 
 ## Prerequisites (if not using NixOS)
