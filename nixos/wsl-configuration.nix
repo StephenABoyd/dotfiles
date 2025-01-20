@@ -8,13 +8,21 @@
 { config, lib, pkgs, ... }:
 
 {
-  wsl.defaultUser = "nixos";
+  wsl.defaultUser = "andyb";
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   environment.systemPackages = with pkgs; [
     home-manager
   ];  
+
+  programs.git = {
+    enable = true;
+    package = pkgs.gitFull;
+    config = {
+      credential.helper = "libsecret";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

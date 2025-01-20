@@ -1,6 +1,14 @@
 # My Dots
 
 ## Install (Non-NixOs)
+
+### Prerequisites (if not using NixOS)
+- Node
+- ZSH (delete existing .zshrc before symlinking)
+- OhMyZsh
+- Starship
+- [RG](https://github.com/BurntSushi/ripgrep)
+- [FD](https://github.com/sharkdp/fd)
 Create symlink for folders/files
 
 ### Neovim Configs
@@ -13,17 +21,20 @@ Create symlink for folders/files
 `ln -s ~/dotfiles/.zshrc ~/.zshrc`
 
 ## Install (NixOS)
+
+### Non-WSL
 ```
 cd <repo-location>
-sudo nixos-reload switch --flake ./nixos
+sudo nixos-reload switch --flake ./nixos#gnome
 home-manager switch --flake ./nixos
 ln -s ~/dotfiles/nvim ~/.config/nvim
 ```
 
-## Prerequisites (if not using NixOS)
-- Node
-- ZSH (delete existing .zshrc before symlinking)
-- OhMyZsh
-- Starship
-- [RG](https://github.com/BurntSushi/ripgrep)
-- [FD](https://github.com/sharkdp/fd)
+### WSL
+```
+cd <repo-location>
+sudo nixos-reload switch --flake ./nixos#wsl
+home-manager switch --flake ./nixos
+ln -s ~/dotfiles/nvim ~/.config/nvim
+```
+
