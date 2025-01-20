@@ -6,15 +6,21 @@
 			url = "github:nix-community/home-manager/release-24.11";
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
+		nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 	};
-	outputs = { nixpkgs, home-manager, ... }:
+	outputs = { nixpkgs, home-manager, nixos-wsl, ... }:
 		let 
 			system = "x86_64-linux";
 		in {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			inherit system;
 			modules = [ 
-				./gnome-configuration.nix
+				./wsl-configuration.nix
+				nixos-wsl.nixosModules.default
+				{
+					system.stateVersion = "24.05";
+					wsl.enable= true;
+				}
 			];
 		};
 
