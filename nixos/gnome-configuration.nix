@@ -91,6 +91,18 @@
     ];
   };
 
+  users.mutableUsers = true;
+
+  users.users.sarahb = {
+    isNormalUser = true;
+    description = "Sarah Boyd";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.nushell;
+    packages = with pkgs; [
+    #  thunderbird
+    ];
+  };
+
   # Install firefox.
   programs.firefox.enable = true;
 
