@@ -47,9 +47,12 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
+
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
+
+  services.flatpak.enable = true;
 
 
   # Configure keymap in X11
@@ -87,7 +90,8 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.nushell;
     packages = with pkgs; [
-    #  thunderbird
+      flatpak
+      gnome.gnome-software
     ];
   };
 
@@ -99,7 +103,8 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.nushell;
     packages = with pkgs; [
-    #  thunderbird
+      flatpak
+      gnome.gnome-software
     ];
   };
 
@@ -153,4 +158,9 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
 
+  systemd.services.flatpak-repo = {
+    wantedBy = [ "multi-user.target" ];
+    path = [ pkgs.flatpak ];
+    script = "flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo";
+  };
 }
