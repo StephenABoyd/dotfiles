@@ -7,9 +7,6 @@
     xwayland.enable = true;
   };
 
-  programs.waybar = {
-    enable = true;
-  };
 
 
   programs.git = {

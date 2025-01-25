@@ -57,10 +57,14 @@
       );
     };
     extraConfig = ''
+      exec-once = waybar
       exec-once = swww-daemon
     '';
   };
   programs = {
+    waybar = {
+      enable = true;
+    };
     kitty = {
       enable = true;
       settings = {
