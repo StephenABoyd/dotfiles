@@ -29,6 +29,12 @@
           enabled = true;
         };
       };
+      input = {
+        natural_scroll = true;
+        touchpad = {
+          natural_scroll = true;
+        };
+      };
       bind =
         [
           "$mod, F, exec, firefox"

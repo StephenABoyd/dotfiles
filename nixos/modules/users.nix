@@ -14,8 +14,6 @@
       gnome.gnome-software
       wezterm
       discord
-      # start research for alternatives here, these were found in a guide to initial system setup
-      # Hyprland: uncomment for packages
       grimblast
       waybar
       (pkgs.waybar.overrideAttrs (oldAttrs: {
