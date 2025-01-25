@@ -20,26 +20,26 @@ return {
     end
   },
   {
-    'nvim-tree/nvim-tree.lua',
+    'stevearc/oil.nvim',
     enabled = function() return vim.g.vscode == nil end,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons', -- optional, for file icons
-    },
-    version = 'nightly', -- optional, updated every week. (see issue #1193)
+    opts = {},
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
     keys = {
-      { ';n', ':NvimTreeToggle<CR>', desc = 'Toggle Nvim Tree' }
+      { ';n', ':Oil --float<CR>', desc = "Open Oil" }
     },
-    config = function() require('nvim-tree').setup({
-      view = {
-        adaptive_size = true
-      },
-      --[[ filters = {
-        custom = { 'tsconfig.*\\.json', '\\.eslintrc.*', 'README\\.md', 'jest\\.config.*', 'project\\.json', 'test-setup.*', '\\.storybook' }
-      }, ]]
-      renderer = {
-        group_empty = true
-      }
-    }) end
+    config = function()
+      require('oil').setup({
+        view_options = {
+          show_hidden = true,
+        },
+        default_file_explorer = true,
+        float = {
+          padding = 10,
+          border = "rounded",
+          preview_split = "auto"
+        }
+      })
+    end
   },
   {
     'folke/trouble.nvim',

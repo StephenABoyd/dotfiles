@@ -12,13 +12,19 @@
     let 
       system = "x86_64-linux";
     in {
-    nixxConfiguration.nixos = nixpkgs.lib.nixosSystem {
+    nixosConfiguration.nixos = nixpkgs.lib.nixosSystem {
                         inherit system;
                 };
     nixosConfigurations.gnome = nixpkgs.lib.nixosSystem {
                         inherit system;
                         modules = [
                                 ./gnome-configuration.nix
+      ];
+    };
+    nixosConfigurations.gnomeEfi = nixpkgs.lib.nixosSystem {
+                        inherit system;
+                        modules = [
+                                ./efi-gnome-configuration.nix
       ];
     };
     nixosConfigurations.wsl = nixpkgs.lib.nixosSystem {
