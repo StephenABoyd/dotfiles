@@ -10,6 +10,17 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.nushell;
     packages = with pkgs; [
+      dbeaver-bin
+      gcc
+      zulu23
+      docker
+      colima
+      kubectl
+      kubernetes-helm
+      vscode
+      tmux
+      tmuxinator
+      lazygit
       flatpak
       gnome.gnome-software
       wezterm

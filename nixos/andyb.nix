@@ -11,6 +11,11 @@
     settings = {
       "$mod" = "SUPER";
       monitor = ",preferred,auto,1";
+      # trigger when the switch is turning on
+      bindl = [
+        ", switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, disable\""
+        ", switch:off:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, 1920x1080, 0x0, 1\""
+      ];
       general = {
         resize_on_border = true;
         # extend_border_grab_area = true;
@@ -174,6 +179,9 @@
         upd = "sudo nixos-rebuild update ${flakeDir}";
         upg = "sudo nixos-rebuild switch --upgrade --flake ${flakeDir}";
         hms = "home-manager switch --flake ${flakeDir}";
+      };
+      environmentVariables = {
+        EDITOR = "nvim";
       };
     };
     home-manager = {

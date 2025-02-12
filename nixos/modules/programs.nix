@@ -7,8 +7,6 @@
     xwayland.enable = true;
   };
 
-
-
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
@@ -20,5 +18,6 @@
   environment.systemPackages = with pkgs; [
     home-manager
     orca-slicer
+    pavucontrol
   ];
 }
